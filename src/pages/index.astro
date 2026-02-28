@@ -1,7 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+
+import profileImage from "../assets/profile.png";
 ---
 
 <Layout title="umdalecs">
-  Alejandro Flores Website
+  <main>
+    <Image src={profileImage} alt="Profile picture" width={200} height={200} />
+    <h1>Alejandro Flores</h1>
+    <h3>FullStack Developer & Student</h3>
+    <p>
+      I'm a passionate full-stack developer with a love for learning and
+      creating. I enjoy working on projects that challenge me and allow me to
+      grow my skills. I'm always looking for new opportunities to collaborate
+      and build amazing things together.
+    </p>
+    <section class="links">
+      <a
+        href="https://www.linkedin.com/in/ing-alejandrof/"
+        target="_blank"
+        rel="noopener noreferrer">LinkedIn</a
+      >
+      <a
+        href="https://github.com/umdalecs"
+        target="_blank"
+        rel="noopener noreferrer">GitHub</a
+      >
+    </section>
+  </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    margin-inline: auto;
+
+    height: 100%;
+    max-width: fit-content;
+  }
+
+  main > img {
+    border-radius: 50%;
+    border: 2px solid var(--foreground);
+  }
+  main > h1 {
+    font-size: 2.5rem;
+    margin-block: 1rem;
+  }
+
+  main > p {
+    max-width: 35rem;
+  }
+</style>
