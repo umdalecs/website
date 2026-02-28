@@ -46,7 +46,7 @@ const links = [
             class="link"
             href={link.href}
             target={link.newPage ? "_blank" : "_self"}
-            rel="noopener noreferrer"
+            rel={link.newPage ? "noopener noreferrer" : undefined}
           >
             <link.icon />
             {link.name}
