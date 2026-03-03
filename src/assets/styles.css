@@ -38,23 +38,26 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   text-align: center;
-  margin-inline: auto;
+
+
+  align-items: center;
+  justify-content: center;
 }
 
 .container > p {
   max-width: 35rem;
 }
 
-main.container {
-  height: 100%;
+.hero.container {
+  margin-inline: auto;
+
   max-width: fit-content;
+  width: 100%;
+  height: 100%;
 }
 
-main.container > img {
+.hero.container > img {
   border-radius: 50%;
   border: 2px solid var(--foreground);
 }
@@ -74,4 +77,8 @@ h1 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.projects.container {
+  height: 50%;
 }

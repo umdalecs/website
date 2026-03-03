@@ -21,7 +21,7 @@ const links = [
   },
   {
     name: "Projects",
-    href: "/projects",
+    href: "/#projects",
     icon: Folder,
     newPage: false
   }
@@ -29,7 +29,7 @@ const links = [
 ---
 
 <Layout title="umdalecs">
-  <main class="container">
+  <main class="hero container">
     <Image src={profileImage} alt="Profile picture" width={200} height={200} />
     <h1>Alejandro Flores</h1>
     <h3>FullStack Developer & Student</h3>
@@ -55,4 +55,12 @@ const links = [
       }
     </article>
   </main>
+  
+  <article class="projects container" id="projects">
+    <h1>Projects</h1>
+    <p>
+      Here are some of the projects I've worked on. Feel free to check them out
+      and reach out if you have any questions or want to collaborate!
+    </p>
+  </article>
 </Layout>
