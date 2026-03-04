@@ -1,0 +1,132 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const programming = [
+  {
+    name: 'languages',
+    items: [
+      {
+        title: 'TS/JS',
+        icon: 'logos:typescript-icon',
+      },
+      {
+        title: 'Java',
+        icon: 'logos:java',
+      },
+      {
+        title: 'C#',
+        icon: 'logos:c-sharp',
+      },
+      {
+        title: 'SQL',
+        icon: 'lucide:database',
+      },
+      {
+        title: 'Python',
+        icon: 'logos:python',
+      },
+      {
+        title: 'Php',
+        icon: 'logos:php',
+      },
+    ]
+  },
+  {
+    name: 'frameworks',
+    items: [
+      {
+        title: 'Astro',
+        icon: 'logos:astro-icon',
+      },
+      {
+        title: 'React',
+        icon: 'logos:react',
+      },
+      {
+        title: 'NextJs',
+        icon: 'logos:nextjs-icon',
+      },
+      {
+        title: 'Express',
+        icon: 'devicon:express',
+      },
+      {
+        title: 'Spring',
+        icon: 'logos:spring-icon',
+      },
+      {
+        title: 'dotnet',
+        icon: 'logos:dotnet',
+      },
+      {
+        title: 'tailwind',
+        icon: 'logos:tailwindcss-icon',
+      },
+    ],
+  },
+  {
+    name: 'tools',
+    items: [
+      {
+        title: 'Git',
+        icon: 'logos:git-icon',
+      },
+      {
+        title: 'GitHub',
+        icon: 'logos:github-icon',
+      },
+      {
+        title: 'Docker',
+        icon: 'logos:docker-icon',
+      },
+      {
+        title: 'PostgreSQL',
+        icon: 'logos:postgresql',
+      },
+      {
+        title: 'MongoDB',
+        icon: 'logos:mongodb-icon',
+      },
+    ],
+  },
+];
+---
+
+<article>
+  {
+  programming.map((stack) => (
+    <h3>{stack.name}</h3>
+    <div>
+        {stack.items.map((item) => (
+          <span>
+              <Icon name={item.icon} />
+              <span>{item.title}</span>
+          </span>
+        ))}
+    </div>
+  ))
+}
+</article>
+
+<style>
+  article > h3 {
+    margin-bottom: 0.5rem;
+  }
+  article > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  article > div > span {
+    color: var(--foreground-accent);
+    background: var(--background-light);
+    padding: 0.25rem;
+    align-items:center;
+    border-radius: 0.25rem;
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+    vertical-align: middle;
+  }
+</style>

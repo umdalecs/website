@@ -1,36 +1,36 @@
 ---
-import { Folder, Mail, Star } from "@lucide/astro";
-import GithubIcon from "../components/icons/Github.astro";
-import LinkedinIcon from "../components/icons/Linkedin.astro";
+import {Icon} from "astro-icon/components";
 
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 
 import profileImage from "../assets/profile.png";
 
-const links: { name: string; href: string; icon: any; newPage: boolean }[] = [
+import Programming from "./_programming.astro";
+
+const links: { name: string; href: string; icon: string; newPage: boolean }[] = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/ing-alejandrof/",
-    icon: LinkedinIcon,
+    icon: "lucide:linkedin",
     newPage: true,
   },
   {
     name: "GitHub",
     href: "https://github.com/umdalecs",
-    icon: GithubIcon,
+    icon: "lucide:github",
     newPage: true,
   },
   {
     name: "Contact",
     href: "mailto:umdalecs@proton.me",
-    icon: Mail,
+    icon: "lucide:mail",
     newPage: false,
   },
   {
     name: "Skills",
     href: "/#skills",
-    icon: Star,
+    icon: "lucide:star",
     newPage: false,
   },
 ];
@@ -54,10 +54,11 @@ if (projects.length > 0) {
   links.splice(3, 0, {
     name: "Projects",
     href: "/#projects",
-    icon: Folder,
+    icon: "lucide:folder",
     newPage: false,
   });
 }
+
 ---
 
 <Layout title="umdalecs">
@@ -80,7 +81,7 @@ if (projects.length > 0) {
             target={link.newPage ? "_blank" : "_self"}
             rel={link.newPage ? "noopener noreferrer" : undefined}
           >
-            <link.icon />
+            <Icon name={link.icon} />
             {link.name}
           </a>
         ))
@@ -123,6 +124,7 @@ if (projects.length > 0) {
       JavaScript, TypeScript, React, Node.js, Astro, and more. I'm always eager
       to learn new technologies and expand my skill set.
     </p>
+    <Programming />
   </section>
 </Layout>
 
@@ -240,7 +242,6 @@ if (projects.length > 0) {
   .skills {
     display: flex;
     flex-direction: column;
-    text-align: center;
 
     align-items: center;
 
@@ -252,5 +253,9 @@ if (projects.length > 0) {
 
   .skills > h2 {
     margin-top: 4rem;
+  }
+
+  .skills > p {
+    text-align: center;
   }
 </style>
