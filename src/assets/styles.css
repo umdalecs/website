@@ -21,7 +21,7 @@
   --foreground: rgba(200, 200, 200, 1);
   --foreground-accent: rgba(220, 220, 220, 1);
   --foreground-ghost: rgba(100, 100, 100, .9);
-  /* Choose some accent color later */
+  /* TODO: Choose some accent color later */
   --accent: rgba(0, 0, 0, 1);
 }
 
@@ -69,6 +69,5 @@ body {
 @keyframes fadeOut {
   to {
     opacity: 0;
-    transform: translateY(80px);
   }
 }
