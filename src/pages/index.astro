@@ -1,5 +1,5 @@
 ---
-import {Icon} from "astro-icon/components";
+import { Icon } from "astro-icon/components";
 
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
@@ -8,32 +8,33 @@ import profileImage from "../assets/profile.png";
 
 import Programming from "./_programming.astro";
 
-const links: { name: string; href: string; icon: string; newPage: boolean }[] = [
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/ing-alejandrof/",
-    icon: "lucide:linkedin",
-    newPage: true,
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/umdalecs",
-    icon: "lucide:github",
-    newPage: true,
-  },
-  {
-    name: "Contact",
-    href: "mailto:umdalecs@proton.me",
-    icon: "lucide:mail",
-    newPage: false,
-  },
-  {
-    name: "Skills",
-    href: "/#skills",
-    icon: "lucide:star",
-    newPage: false,
-  },
-];
+const links: { name: string; href: string; icon: string; newPage: boolean }[] =
+  [
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/ing-alejandrof/",
+      icon: "lucide:linkedin",
+      newPage: true,
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/umdalecs",
+      icon: "lucide:github",
+      newPage: true,
+    },
+    {
+      name: "Contact",
+      href: "mailto:umdalecs@proton.me",
+      icon: "lucide:mail",
+      newPage: false,
+    },
+    {
+      name: "Skills",
+      href: "#skills",
+      icon: "lucide:star",
+      newPage: false,
+    },
+  ];
 
 const projects: {
   name: string;
@@ -53,16 +54,15 @@ const projects: {
 if (projects.length > 0) {
   links.splice(3, 0, {
     name: "Projects",
-    href: "/#projects",
+    href: "#projects",
     icon: "lucide:folder",
     newPage: false,
   });
 }
-
 ---
 
 <Layout title="umdalecs">
-  <main class="hero fade-on-scroll" id="hero">
+  <main class="hero container fade-on-scroll" id="hero">
     <Image src={profileImage} alt="Profile picture" width={200} height={200} />
     <h1>Alejandro Flores</h1>
     <h3>FullStack Developer & Student</h3>
@@ -91,7 +91,7 @@ if (projects.length > 0) {
 
   {
     projects.length > 0 && (
-      <section class="projects fade-on-scroll" id="projects">
+      <section class="projects container fade-on-scroll" id="projects">
         <h2>Projects</h2>
         <p>Here are some of my recent projects, feel free to explore:</p>
         {projects.map((project) => (
@@ -117,7 +117,7 @@ if (projects.length > 0) {
     )
   }
 
-  <section class="skills fade-on-scroll" id="skills">
+  <section class="skills container fade-on-scroll" id="skills">
     <h2>Skills</h2>
     <p>
       I have experience with a variety of technologies and tools, including
@@ -129,7 +129,7 @@ if (projects.length > 0) {
 </Layout>
 
 <style>
-  .hero {
+  .container {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -138,6 +138,8 @@ if (projects.length > 0) {
     justify-content: center;
 
     margin-inline: auto;
+    padding-inline: 1.5rem;
+    box-sizing: border-box;
 
     max-width: 35rem;
     height: 100%;
@@ -171,6 +173,8 @@ if (projects.length > 0) {
 
   .links {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
     gap: 1rem;
     margin-block: 1rem;
@@ -192,23 +196,6 @@ if (projects.length > 0) {
   .links .link:hover {
     color: var(--foreground-accent);
     background: var(--background-accent);
-  }
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-
-    align-items: center;
-
-    margin-inline: auto;
-
-    min-height: 100%;
-    max-width: 35rem;
-  }
-
-  .projects > h2 {
-    margin-top: 4rem;
   }
 
   .projects > p {
@@ -239,23 +226,25 @@ if (projects.length > 0) {
     width: fit-content;
   }
 
-  .skills {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-
-    margin-inline: auto;
-
-    min-height: 100%;
-    max-width: 35rem;
-  }
-
-  .skills > h2 {
-    margin-top: 4rem;
-  }
-
   .skills > p {
     text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .project {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project > img {
+      width: 100%;
+      border-radius: 0.25rem 0.25rem 0 0;
+      aspect-ratio: auto;
+    }
+
+    .project > div > :last-child {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
   }
 </style>

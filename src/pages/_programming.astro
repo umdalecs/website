@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 
 const programming = [
   {
-    name: 'languages',
+    name: 'Languages',
     items: [
       {
         title: 'TS/JS',
@@ -26,13 +26,13 @@ const programming = [
         icon: 'logos:python',
       },
       {
-        title: 'Php',
+        title: 'PHP',
         icon: 'logos:php',
       },
     ]
   },
   {
-    name: 'frameworks',
+    name: 'Frameworks',
     items: [
       {
         title: 'Astro',
@@ -43,7 +43,7 @@ const programming = [
         icon: 'logos:react',
       },
       {
-        title: 'NextJs',
+        title: 'Next.js',
         icon: 'logos:nextjs-icon',
       },
       {
@@ -55,17 +55,17 @@ const programming = [
         icon: 'logos:spring-icon',
       },
       {
-        title: 'dotnet',
+        title: '.NET',
         icon: 'logos:dotnet',
       },
       {
-        title: 'tailwind',
+        title: 'Tailwind CSS',
         icon: 'logos:tailwindcss-icon',
       },
     ],
   },
   {
-    name: 'tools',
+    name: 'Tools',
     items: [
       {
         title: 'Git',
@@ -122,11 +122,12 @@ const programming = [
   article > div > span {
     color: var(--foreground-accent);
     background: var(--background-light);
-    padding: 0.25rem;
-    align-items:center;
     border-radius: 0.25rem;
     padding-inline: 0.5rem;
     padding-block: 0.25rem;
-    vertical-align: middle;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 </style>
