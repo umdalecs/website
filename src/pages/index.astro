@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 
 import profileImage from "../assets/profile.png";
+import portFolioImage from "../assets/project-images/portfolio.png";
 
 import Programming from "./_programming.astro";
 
@@ -45,9 +46,16 @@ const projects: {
   {
     name: "Personal Portfolio",
     description:
-      "A personal portfolio website built with Astro, showcasing my projects and skills.",
-    image: profileImage,
+      "This portfolio website built with Astro, showcasing my projects and skills.",
+    image: portFolioImage,
     link: "https://github.com/umdalecs/umdalecs.github.io",
+  },
+  {
+    name: "ISDE internal system",
+    description:
+      "Next.js frontend and Spring Boot REST API for managing users, responses and process results of psychological tests?.",
+    image: profileImage,
+    link: null,
   },
 ];
 
@@ -102,7 +110,7 @@ if (projects.length > 0) {
               <p>{project.description}</p>
               {project.link && (
                 <a
-                  class="link"
+                  class="project-link"
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -132,7 +140,6 @@ if (projects.length > 0) {
   .container {
     display: flex;
     flex-direction: column;
-    text-align: center;
 
     align-items: center;
     justify-content: center;
@@ -141,8 +148,12 @@ if (projects.length > 0) {
     padding-inline: 1.5rem;
     box-sizing: border-box;
 
-    max-width: 35rem;
-    height: 100%;
+    max-width: 45rem;
+    min-height: 100%;
+  }
+
+  .hero {
+    text-align: center;
   }
 
   .hero > img {
@@ -155,20 +166,23 @@ if (projects.length > 0) {
   h3 {
     font-family: "JetBrainsMono", monospace;
   }
-
+  
   h1 {
     font-size: 2.5rem;
     margin-block: 1rem;
+    color: var(--foreground-accent);
   }
 
   h2 {
     font-size: 2rem;
     margin-block: 1rem;
+    color: var(--foreground-accent2);
   }
 
   h3 {
     font-size: 1.5rem;
     margin-block: 0.25rem;
+    color: var(--foreground-accent3);
   }
 
   .links {
@@ -198,8 +212,15 @@ if (projects.length > 0) {
     background: var(--background-accent);
   }
 
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .projects > p {
     padding: 1rem;
+    text-align: center;
   }
 
   .project {
@@ -224,6 +245,11 @@ if (projects.length > 0) {
   .project > div > :last-child {
     margin-left: auto;
     width: fit-content;
+  }
+
+  .project-link {
+    color: var(--foreground-accent);
+    background: var(--background-accent);
   }
 
   .skills > p {

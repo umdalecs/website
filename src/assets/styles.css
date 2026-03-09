@@ -15,15 +15,35 @@
   font-family: "Inter", sans-serif;
   /* font-family: sans-serif; */
 
-  --background: rgba(20, 20, 20, 1);
-  --background-secondary: rgba(25, 25, 25, 1);
-  --background-accent: rgba(30, 30, 30, 1);
-  --background-light: rgba(70, 70, 70, 1);
-  --foreground: rgba(200, 200, 200, 1);
-  --foreground-accent: rgba(220, 220, 220, 1);
-  --foreground-ghost: rgba(100, 100, 100, .9);
-  /* TODO: Choose some accent color later */
-  --accent: rgba(0, 0, 0, 1);
+  --background: #24283b;
+  --background-secondary: #1a1b26;
+  --background-accent: #1d1d1d;
+  --background-light: #33364d;
+  --foreground: #a9b1d6;
+  --foreground-accent: #f7768e;
+  --foreground-accent2: #ff9e64;
+  --foreground-accent3: #e0af68;
+  --foreground-ghost: #414868;
+
+  /* 
+    --foreground-accent: #f7768e; 
+    #ff9e64;
+    #e0af68;
+    #cfc9c2;
+    #9ece6a;
+    #73daca;
+    #b4f9f8;
+    #2ac3de;
+    #7dcfff;
+    #7aa2f7;
+    #bb9af7;
+    #c0caf5;
+    --foreground: #a9b1d6;
+    --???: #9aa5ce;
+    --ghost: #414868;
+    --background: #24283b;
+    --background-clear: #1a1b26;
+  */
 }
 
 html,
