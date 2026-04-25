@@ -5,7 +5,14 @@ import logos from "@iconify-json/logos/icons.json";
 import lucide from "@iconify-json/lucide/icons.json";
 import devicon from "@iconify-json/devicon/icons.json";
 
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineConfig({
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ]
+  },
   image: {
     service: passthroughImageService(),
   },
