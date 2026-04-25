@@ -1,71 +1,39 @@
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter_18pt-Regular.ttf") format("truetype");
-}
+@import "tailwindcss";
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Regular.ttf") format("truetype");
 }
 
-:root {
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
-
-  --background: #24283b;
-  --background-secondary: #1a1b26;
-  --background-accent: #1d1d1d;
-  --background-light: #33364d;
-  --foreground: #a9b1d6;
-  --foreground-accent: #f7768e;
-  --foreground-accent2: #ff9e64;
-  --foreground-accent3: #e0af68;
-  --foreground-ghost: #414868;
+@font-face {
+    font-family: "JetBrainsMono";
+    src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+@theme {
+    --color-background: #24283b;
+    --color-background-secondary: #1a1b26;
+    --color-background-accent: #1d1d1d;
+    --color-background-light: #33364d;
+    --color-foreground: #a9b1d6;
+    --color-foreground-accent: #f7768e;
+    --color-foreground-accent2: #ff9e64;
+    --color-foreground-accent3: #e0af68;
+    --color-foreground-ghost: #414868;
+    --font-inter: "Inter", sans-serif;
+    --font-mono: "JetBrainsMono", monospace;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-}
-
-a {
-  color: var(--foreground);
-  text-decoration: none;
-}
-
-button {
-  background: var(--background);
-  color: var(--foreground);
-}
-
-body {
-  overflow: auto;
-  background: var(--background);
-  color: var(--foreground);
-}
-
-.fade-on-scroll {
-  animation: fadeOut linear;
-  animation-timeline: view();
-  animation-range: exit;
+@layer utilities {
+    .fade-on-scroll {
+        animation: fadeOut linear;
+        animation-timeline: view();
+        animation-range: exit;
+    }
 }
 
 @keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
+    to {
+        opacity: 0;
+    }
 }

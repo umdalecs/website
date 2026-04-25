@@ -6,7 +6,8 @@ import Layout from "../layouts/Layout.astro";
 
 import profileImage from "../assets/profile.png";
 
-import Programming from "./_programming.astro";
+import Skills from "../components/skills.astro";
+import Projects from "../components/projects.astro";
 
 const links: { name: string; href: string; icon: string; newPage: boolean }[] =
   [
@@ -34,43 +35,44 @@ const links: { name: string; href: string; icon: string; newPage: boolean }[] =
       icon: "lucide:star",
       newPage: false,
     },
+    {
+      name: "Projects",
+      href: "#projects",
+      icon: "lucide:folder",
+      newPage: false,
+    },
   ];
-
-const projects: {
-  name: string;
-  description: string;
-  image: ImageMetadata;
-  link: string | null;
-}[] = [
-  
-];
-
-if (projects.length > 0) {
-  links.push({
-    name: "Projects",
-    href: "#projects",
-    icon: "lucide:folder",
-    newPage: false,
-  });
-}
 ---
 
 <Layout title="umdalecs">
-  <main class="hero container fade-on-scroll" id="hero">
-    <Image src={profileImage} alt="Profile picture" width={200} height={200} />
-    <h1>Alejandro Flores</h1>
-    <h3>FullStack Developer & Student</h3>
-    <p>
+  <main
+    class="text-center min-h-full max-w-4xl flex flex-col flex-center justify-center items-center mx-auto px-4 fade-on-scroll"
+    id="hero"
+  >
+    <Image
+      class="border rounded-[50%]"
+      src={profileImage}
+      alt="Profile picture"
+      width={200}
+      height={200}
+    />
+    <h1 class="text-4xl text-foreground-accent mb-4">Alejandro Flores</h1>
+    <h3 class="text-2xl text-foreground-accent3 mb-4">
+      FullStack Developer & Student
+    </h3>
+    <p class="mb-4">
       I'm a passionate full-stack developer with a love for learning and
       creating. I enjoy working on projects that challenge me and allow me to
       grow my skills. I'm always looking for new opportunities to collaborate
       and build amazing things together.
     </p>
-    <article class="links">
+    <article
+      class="flex justify-center flex-wrap w-full gap-4 mx-4 hover:text-foreground-ghost"
+    >
       {
         links.map((link) => (
           <a
-            class="link"
+            class="flex items-center gap-1 p-2 border rounded-sm tracking-normal hover:text-foreground-accent"
             href={link.href}
             target={link.newPage ? "_blank" : "_self"}
             rel={link.newPage ? "noopener noreferrer" : undefined}
@@ -83,180 +85,6 @@ if (projects.length > 0) {
     </article>
   </main>
 
-  {
-    projects.length > 0 && (
-      <section class="projects container fade-on-scroll" id="projects">
-        <h2>Projects</h2>
-        <p>Here are some of my recent projects, feel free to explore:</p>
-        {projects.map((project) => (
-          <article class="project">
-            <Image src={project.image} alt={project.name} />
-            <div>
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-              {project.link && (
-                <a
-                  class="project-link"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Project
-                </a>
-              )}
-            </div>
-          </article>
-        ))}
-      </section>
-    )
-  }
-
-  <section class="skills container fade-on-scroll" id="skills">
-    <h2>Skills</h2>
-    <p>
-      I have experience with a variety of technologies and tools, including
-      JavaScript, TypeScript, React, Node.js, Astro, and more. I'm always eager
-      to learn new technologies and expand my skill set.
-    </p>
-    <Programming />
-  </section>
+  <Skills />
+  <Projects />
 </Layout>
-
-<style>
-  .container {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-inline: auto;
-    padding-inline: 1.5rem;
-    box-sizing: border-box;
-
-    max-width: 45rem;
-    min-height: 100%;
-  }
-
-  .hero {
-    text-align: center;
-  }
-
-  .hero > img {
-    border-radius: 50%;
-    border: 2px solid var(--foreground);
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: "JetBrainsMono", monospace;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-block: 1rem;
-    color: var(--foreground-accent);
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin-block: 1rem;
-    color: var(--foreground-accent2);
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    margin-block: 0.25rem;
-    color: var(--foreground-accent3);
-  }
-
-  .links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 1rem;
-    margin-block: 1rem;
-  }
-
-  .links:hover .link {
-    color: var(--foreground-ghost);
-  }
-
-  .link {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    transition: color 0.3s ease;
-  }
-
-  .links .link:hover {
-    color: var(--foreground-accent);
-    background: var(--background-accent);
-  }
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .projects > p {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .project {
-    background-color: var(--background-secondary);
-    border-radius: 0.25rem;
-    display: flex;
-  }
-
-  .project > img {
-    width: 10rem;
-    height: auto;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-    aspect-ratio: 1/1;
-  }
-
-  .project > div {
-    padding: 1rem;
-    text-align: left;
-  }
-
-  .project > div > :last-child {
-    margin-left: auto;
-    width: fit-content;
-  }
-
-  .project-link {
-    color: var(--foreground-accent);
-    background: var(--background-accent);
-  }
-
-  .skills > p {
-    text-align: center;
-  }
-
-  @media (max-width: 600px) {
-    .project {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .project > img {
-      width: 100%;
-      border-radius: 0.25rem 0.25rem 0 0;
-      aspect-ratio: auto;
-    }
-
-    .project > div > :last-child {
-      margin-left: 0;
-      margin-top: 1rem;
-    }
-  }
-</style>

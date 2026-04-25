@@ -1,9 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-const programming = [
+const stacks = [
   {
-    name: 'Languages',
+    name: 'Programming Languages',
     items: [
       {
         title: 'TS/JS',
@@ -29,6 +29,10 @@ const programming = [
         title: 'PHP',
         icon: 'logos:php',
       },
+      {
+        title: 'Go',
+        icon: 'logos:go',
+      },
     ]
   },
   {
@@ -47,6 +51,10 @@ const programming = [
         icon: 'logos:nextjs-icon',
       },
       {
+        title: 'Angular',
+        icon: 'logos:angular-icon',
+      },
+      {
         title: 'Express',
         icon: 'devicon:express',
       },
@@ -57,6 +65,10 @@ const programming = [
       {
         title: '.NET',
         icon: 'logos:dotnet',
+      },
+      {
+        title: 'Gin',
+        icon: 'logos:gin',
       },
       {
         title: 'Tailwind CSS',
@@ -76,6 +88,10 @@ const programming = [
         icon: 'logos:github-icon',
       },
       {
+        title: 'GitLab',
+        icon: 'logos:gitlab-icon',
+      },
+      {
         title: 'Docker',
         icon: 'logos:docker-icon',
       },
@@ -92,41 +108,26 @@ const programming = [
 ];
 ---
 
-<article>
-  {
-  programming.map((stack) => (
-    <h3>{stack.name}</h3>
-    <div>
-        {stack.items.map((item) => (
-          <span>
-              <Icon name={item.icon} />
-              <span>{item.title}</span>
-          </span>
-        ))}
-    </div>
-  ))
-}
-</article>
-
-<style>
-  article > h3 {
-    margin-bottom: 0.5rem;
+<section class="skills min-h-full max-w-3xl flex flex-col flex-center justify-center items-center mx-auto px-4 fade-on-scroll" id="skills">
+  <h2 class="text-4xl text-foreground-accent2 mb-4">Skills</h2>
+  <p class="text-center mb-4">
+    I have experience with a variety of technologies and tools, including
+    JavaScript, TypeScript, React, Node.js, Astro, and more. I'm always eager
+    to learn new technologies and expand my skill set.
+  </p>
+  <article>
+    {
+    stacks.map((stack) => (
+      <h3 class="mb-2">{stack.name}</h3>
+      <div class="flex flex-wrap gap-2 mb-2">
+          {stack.items.map((item) => (
+            <span class="bg-background-light border rounded-sm py-2 px-1 flex items-center gap-1">
+                <Icon size="1rem" name={item.icon} />
+                <span>{item.title}</span>
+            </span>
+          ))}
+      </div>
+    ))
   }
-  article > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  article > div > span {
-    background: var(--background-light);
-    border-radius: 0.25rem;
-    padding-inline: 0.5rem;
-    padding-block: 0.25rem;
-
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-</style>
+  </article>
+</section>
