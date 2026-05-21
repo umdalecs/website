@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import portfolioImage from "../assets/project-images/portfolio.png";
 import nexusImage from "../assets/project-images/nexus.png";
 
 const projects: {
@@ -10,12 +9,6 @@ const projects: {
   link: string | null;
 }[] = [
   {
-    name: "umdalecs.github.io",
-    description: "My personal developer portfolio featuring a premium high-contrast dark theme. Engineered with Astro, Tailwind CSS v4, and modern OKLCH color spaces for rich neon glows.",
-    image: portfolioImage,
-    link: "https://github.com/umdalecs/umdalecs.github.io",
-  },
-  {
     name: "Project Nexus",
     description: "An upcoming software application utilizing advanced modern tech stacks. This sleek placeholder visualizes future deployment goals and cybernetic architecture.",
     image: nexusImage,
@@ -24,63 +17,47 @@ const projects: {
 ];
 ---
 
-{
-  (
-    <section
-      class="min-h-full max-w-4xl flex flex-col justify-center items-center mx-auto px-4 mt-20 fade-on-scroll"
-      id="projects"
-    >
-      <h2 class="text-4xl font-mono text-accent-purple glow-purple mb-6 transition-all duration-300 hover:glow-purple-intense">
-        Projects
-      </h2>
-      {projects.length < 1 ? (
-        <p class="p-4 text-center text-foreground/80">
-          I haven't yet uploaded projects for this portfolio but feel free to
-          check my
-          <a
-            href="https://github.com/umdalecs/"
-            class="underline text-accent-blue glow-blue hover:glow-blue-medium px-1"
-          >
-            github
-          </a>
-          :)
-        </p>
-      ) : (
-        <>
-          <p class="p-4 text-center text-foreground/85 mb-6">
-            Here are some of my recent projects, feel free to explore:
-          </p>
-          {projects.map((project) => (
-            <article class="bg-background-secondary/60 border border-accent-blue/15 rounded-xl backdrop-blur-lg flex overflow-hidden sm:flex-col sm:items-center transition-all duration-300 hover:border-accent-blue hover:box-glow-blue hover:-translate-y-1 w-full">
-              <Image
-                class="w-40 h-auto aspect-square sm:w-full sm:rounded-t-xl sm:aspect-auto object-cover transition-transform duration-500 hover:scale-105"
-                src={project.image}
-                alt={project.name}
-              />
-              <div class="p-6 text-left w-full flex flex-col justify-between">
-                <div>
-                  <h3 class="text-2xl font-mono text-accent-pink glow-pink mb-2 transition-all duration-300 hover:glow-pink-intense">
-                    {project.name}
-                  </h3>
-                  <p class="text-foreground/80 leading-relaxed">{project.description}</p>
-                </div>
-                {project.link && (
-                  <div class="mt-4 last:ml-auto w-fit">
-                    <a
-                      class="inline-block text-background font-semibold bg-accent-blue border border-accent-blue py-2 px-5 rounded-lg transition-all duration-300 shadow-blue-glow hover:bg-transparent hover:text-accent-blue hover:box-glow-blue hover:glow-blue hover:-translate-y-0.5"
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Project
-                    </a>
-                  </div>
-                )}
-              </div>
-            </article>
-          ))}
-        </>
-      )}
-    </section>
-  )
-}
+<section
+  class="min-h-full max-w-4xl flex flex-col justify-center items-center mx-auto px-4 mt-20 fade-on-scroll"
+  id="projects"
+>
+  <h2 class="text-4xl font-mono text-accent-purple glow-purple mb-6 transition-all duration-300 hover:glow-purple-intense">
+    Projects
+  </h2>
+
+  <p class="p-4 text-center text-foreground/85 mb-6">
+    Here are some of my recent projects, feel free to explore:
+  </p>
+
+  {projects.map((project) => (
+    <article class="bg-background-secondary/60 border border-accent-blue/15 rounded-xl backdrop-blur-lg flex flex-col sm:flex-row overflow-hidden transition-all duration-300 hover:border-accent-blue hover:box-glow-blue hover:-translate-y-1 w-full mb-6 last:mb-0">
+      <div class="w-full sm:w-48 md:w-56 h-48 sm:h-auto shrink-0 overflow-hidden">
+        <Image
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          src={project.image}
+          alt={project.name}
+        />
+      </div>
+      <div class="p-6 text-left w-full flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl font-mono text-accent-pink glow-pink mb-2 transition-all duration-300 hover:glow-pink-intense">
+            {project.name}
+          </h3>
+          <p class="text-foreground/80 leading-relaxed">{project.description}</p>
+        </div>
+        {project.link && (
+          <div class="mt-4 last:ml-auto w-fit">
+            <a
+              class="inline-block text-background font-semibold bg-accent-blue border border-accent-blue py-2 px-5 rounded-lg transition-all duration-300 shadow-blue-glow hover:bg-transparent hover:text-accent-blue hover:box-glow-blue hover:glow-blue hover:-translate-y-0.5"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project
+            </a>
+          </div>
+        )}
+      </div>
+    </article>
+  ))}
+</section>

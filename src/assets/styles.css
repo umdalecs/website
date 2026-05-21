@@ -18,6 +18,7 @@
     --color-foreground: oklch(0.96 0.01 245);
     --color-foreground-ghost: oklch(0.55 0.02 240);
     --color-foreground-glow: oklch(1 0 0 / 0.3);
+    --color-icon-glow: oklch(1 0 0 / 0.65);
     
     --color-accent-blue: oklch(0.55 0.3 250);   /* Electric Neon Blue */
     --color-accent-blue-glow-high: oklch(0.55 0.3 250 / 0.8);
@@ -86,6 +87,9 @@
 
 @utility drop-shadow-white-soft {
     filter: drop-shadow(0 0 2px var(--color-foreground-glow));
+}
+@utility drop-shadow-icon-contrast {
+    filter: drop-shadow(0 0 3px var(--color-icon-glow));
 }
 
 @layer utilities {
