@@ -16,12 +16,6 @@ const links: { name: string; href: string; icon: string; newPage: boolean }[] =
       newPage: true,
     },
     {
-      name: "Contact",
-      href: "mailto:umdalecs@proton.me",
-      icon: "lucide:mail",
-      newPage: false,
-    },
-    {
       name: "Skills",
       href: "#skills",
       icon: "lucide:star",
@@ -33,21 +27,28 @@ const links: { name: string; href: string; icon: string; newPage: boolean }[] =
       icon: "lucide:folder",
       newPage: false,
     },
+    {
+      name: "Contact",
+      href: "#contact",
+      icon: "lucide:mail",
+      newPage: false,
+    },
   ];
 ---
 
 <article
-  class="flex justify-center flex-wrap w-full gap-4 mx-4 group/links"
+  id="hero-menu"
+  class="flex justify-center flex-wrap w-full gap-4 mx-4 group/menu"
 >
   {
     links.map((link) => (
       <a
-        class="flex items-center gap-2 py-2.5 px-5 border border-accent-purple/30 rounded-lg bg-background-secondary/50 backdrop-blur-md tracking-normal transition-all duration-300 hover:text-accent-purple hover:border-accent-purple hover:box-glow-purple hover:glow-purple hover:bg-accent-purple/15 group-hover/links:opacity-50 group-hover/links:hover:opacity-100 group-hover/links:scale-95 group-hover/links:hover:scale-105 group-hover/links:border-accent-purple/10 group-hover/links:hover:border-accent-purple"
+        class="flex items-center gap-2 py-2.5 px-5 border border-accent-purple/30 rounded-lg bg-background-secondary/50 backdrop-blur-md tracking-normal transition-all duration-300 hover:text-accent-purple hover:border-accent-purple hover:box-glow-purple hover:glow-purple hover:bg-accent-purple/15 group-hover/menu:opacity-50 group-hover/menu:hover:opacity-100 group-hover/menu:scale-95 group-hover/menu:hover:scale-105 group-hover/menu:border-accent-purple/10 group-hover/menu:hover:border-accent-purple"
         href={link.href}
         target={link.newPage ? "_blank" : "_self"}
         rel={link.newPage ? "noopener noreferrer" : undefined}
       >
-        <Icon name={link.icon} />
+        <Icon name={link.icon} size="1.35rem" />
         {link.name}
       </a>
     ))

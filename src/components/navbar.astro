@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import profileImage from "../assets/profile.png";
+
+const links = [
+  { name: "Skills", href: "#skills", icon: "lucide:star" },
+  { name: "Projects", href: "#projects", icon: "lucide:folder" },
+  { name: "Contact", href: "#contact", icon: "lucide:mail" },
+];
+
+const socials = [
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/ing-alejandrof/", icon: "lucide:linkedin" },
+  { name: "GitHub", href: "https://github.com/umdalecs", icon: "lucide:github" },
+];
+---
+
+<nav
+  id="floating-navbar"
+  class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-4xl flex justify-between items-center py-3.5 px-6 md:px-8 bg-background-secondary/75 border border-accent-blue/25 box-glow-blue rounded-full backdrop-blur-xl transition-all duration-500 ease-out opacity-0 -translate-y-12 scale-95 pointer-events-none"
+>
+  <!-- Left Side: Profile and Name -->
+  <a href="#hero" class="flex items-center gap-3 group/nav-logo">
+    <Image
+      src={profileImage}
+      alt="Profile thumbnail"
+      width={40}
+      height={40}
+      class="rounded-full border border-accent-blue/30 group-hover/nav-logo:border-accent-blue group-hover/nav-logo:scale-105 transition-all duration-300"
+    />
+    <span class="font-mono text-base font-semibold text-white tracking-wide group-hover/nav-logo:text-accent-blue transition-colors duration-300 hidden sm:inline">
+      Alejandro Flores
+    </span>
+  </a>
+
+  <!-- Right Side: Links & Socials -->
+  <div class="flex items-center gap-2 md:gap-4">
+    <!-- Relative Links -->
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class="flex items-center gap-2 py-2 px-4 md:px-5 rounded-full font-mono text-sm md:text-base text-foreground/80 hover:text-white hover:bg-white/5 transition-all duration-300"
+        >
+          <Icon name={link.icon} size="1.1rem" class="text-accent-purple/75" />
+          <span>{link.name}</span>
+        </a>
+      ))
+    }
+
+    <!-- Divider -->
+    <div class="w-px h-5 bg-foreground/15 mx-2 hidden xs:block"></div>
+
+    <!-- Social Icons -->
+    <div class="flex items-center gap-1.5 hidden xs:flex">
+      {
+        socials.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={social.name}
+            class="p-2.5 rounded-full text-foreground/70 hover:text-accent-pink hover:bg-accent-pink/10 transition-all duration-300"
+          >
+            <Icon name={social.icon} size="1.25rem" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Simple intersection observer to show navbar when hero-menu is out of view
+  const heroMenu = document.getElementById("hero-menu");
+  const navbar = document.getElementById("floating-navbar");
+
+  if (heroMenu && navbar) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          // Hero menu is NOT visible, show floating navbar
+          navbar.classList.remove("opacity-0", "-translate-y-12", "scale-95", "pointer-events-none");
+          navbar.classList.add("opacity-100", "translate-y-0", "scale-100", "pointer-events-auto");
+        } else {
+          // Hero menu IS visible, hide floating navbar
+          navbar.classList.add("opacity-0", "-translate-y-12", "scale-95", "pointer-events-none");
+          navbar.classList.remove("opacity-100", "translate-y-0", "scale-100", "pointer-events-auto");
+        }
+      },
+      {
+        root: null, // viewport
+        threshold: 0.1, // trigger as soon as 10% is visible/invisible
+      }
+    );
+
+    observer.observe(heroMenu);
+  }
+</script>
