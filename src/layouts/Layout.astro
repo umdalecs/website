@@ -17,5 +17,35 @@ import "../assets/styles.css";
     class="bg-background text-foreground overflow-auto font-inter h-screen w-full"
   >
     <slot />
+    <script>
+      // Fallback for browsers that do not support CSS scroll-driven animations (like Firefox)
+      if (!CSS.supports("animation-timeline", "view()")) {
+        const fadeElements = document.querySelectorAll(".fade-on-scroll");
+
+        const handleScroll = () => {
+          fadeElements.forEach((el) => {
+            if (el instanceof HTMLElement) {
+              const rect = el.getBoundingClientRect();
+              const elementHeight = rect.height;
+              const elementTop = rect.top;
+
+              // Exit range: as the element exits the top of the viewport
+              if (elementTop < 0) {
+                const exitPercentage = Math.min(Math.abs(elementTop) / elementHeight, 1);
+                el.style.opacity = (1 - exitPercentage).toString();
+              } else {
+                el.style.opacity = "1";
+              }
+            }
+          });
+        };
+
+        // Use capture: true to intercept scroll events if the body is the scroll container
+        window.addEventListener("scroll", handleScroll, { passive: true, capture: true });
+        
+        // Run once initially
+        handleScroll();
+      }
+    </script>
   </body>
 </html>

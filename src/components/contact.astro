@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class="min-h-full max-w-4xl flex flex-col justify-center items-center mx-auto px-4 mt-20 mb-24 fade-on-scroll"
+  id="contact"
+>
+  <h2 class="text-4xl font-mono text-accent-pink glow-pink mb-6 transition-all duration-300 hover:glow-pink-intense">
+    Contact
+  </h2>
+
+  <p class="text-center text-foreground/80 mb-8 max-w-2xl leading-relaxed">
+    Have an interesting project, collaboration idea, or just want to say hello? I'd love to connect with you. Reach out via email and I'll get back to you as soon as possible.
+  </p>
+
+  <div class="w-full max-w-xl bg-background-secondary/60 border border-accent-blue/15 rounded-2xl backdrop-blur-lg p-8 flex flex-col items-center transition-all duration-300 hover:border-accent-blue hover:box-glow-blue hover:-translate-y-1">
+    <div class="p-4 bg-accent-blue/10 border border-accent-blue/30 rounded-full mb-6 box-glow-blue transition-all duration-300 hover:scale-105">
+      <Icon name="lucide:mail" class="text-accent-blue text-4xl drop-shadow-icon-contrast shrink-0 animate-pulse" />
+    </div>
+    
+    <h3 class="text-2xl font-mono text-white mb-2 tracking-wide">
+      Get in Touch
+    </h3>
+    
+    <p class="text-foreground-ghost text-sm mb-6">
+      Primary Contact Email
+    </p>
+
+    <!-- Email Card with interactive effects -->
+    <a
+      href="mailto:dev.alejandro.flores@gmail.com"
+      class="group/email flex items-center gap-3 py-3 px-6 rounded-xl bg-background-accent/80 border border-accent-purple/20 hover:border-accent-purple hover:bg-accent-purple/10 transition-all duration-300 mb-6 font-mono text-lg md:text-xl text-accent-purple hover:text-white"
+    >
+      <span class="text-foreground/90 group-hover/email:text-white transition-colors duration-300">
+        dev.alejandro.flores@gmail.com
+      </span>
+      <Icon name="lucide:external-link" class="text-base text-accent-purple/70 group-hover/email:text-white transition-colors duration-300" />
+    </a>
+
+    <!-- Interactive Copy Button -->
+    <button
+      id="copy-email-btn"
+      class="flex items-center gap-2 text-background font-semibold bg-accent-pink border border-accent-pink py-2.5 px-6 rounded-lg transition-all duration-300 hover:bg-transparent hover:text-accent-pink hover:box-glow-pink hover:-translate-y-0.5 cursor-pointer"
+      data-email="dev.alejandro.flores@gmail.com"
+    >
+      <Icon name="lucide:copy" class="text-lg transition-all duration-300" id="copy-icon" />
+      <Icon name="lucide:check" class="text-lg transition-all duration-300 hidden" id="check-icon" />
+      <span id="copy-text" class="transition-all duration-300">Copy Email</span>
+    </button>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById("copy-email-btn");
+  const copyText = document.getElementById("copy-text");
+  const copyIcon = document.getElementById("copy-icon");
+  const checkIcon = document.getElementById("check-icon");
+
+  if (copyBtn && copyText && copyIcon && checkIcon) {
+    const email = copyBtn.getAttribute("data-email") || "";
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(email).then(() => {
+        // Change text and show check icon
+        copyText.textContent = "Copied!";
+        copyIcon.classList.add("hidden");
+        checkIcon.classList.remove("hidden");
+        
+        // Change button styling to success
+        copyBtn.classList.remove("bg-accent-pink", "border-accent-pink", "text-background", "hover:text-accent-pink", "hover:box-glow-pink");
+        copyBtn.classList.add("bg-green-600", "border-green-600", "text-white");
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+          if (copyText) copyText.textContent = "Copy Email";
+          copyIcon.classList.remove("hidden");
+          checkIcon.classList.add("hidden");
+          
+          copyBtn.classList.add("bg-accent-pink", "border-accent-pink", "text-background", "hover:text-accent-pink", "hover:box-glow-pink");
+          copyBtn.classList.remove("bg-green-600", "border-green-600", "text-white");
+        }, 2000);
+      }).catch(err => {
+        console.error("Failed to copy text: ", err);
+      });
+    });
+  }
+</script>

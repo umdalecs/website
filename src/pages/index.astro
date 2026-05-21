@@ -6,10 +6,14 @@ import profileImage from "../assets/profile.png";
 
 import Skills from "../components/skills.astro";
 import Projects from "../components/projects.astro";
-import Links from "../components/links.astro";
+import Menu from "../components/menu.astro";
+import Contact from "../components/contact.astro";
+import Footer from "../components/footer.astro";
+import Navbar from "../components/navbar.astro";
 ---
 
 <Layout title="umdalecs">
+  <Navbar />
   <main
     class="text-center min-h-full max-w-4xl flex flex-col justify-center items-center mx-auto px-4 fade-on-scroll"
     id="hero"
@@ -32,9 +36,11 @@ import Links from "../components/links.astro";
       applications. I focus on learning new technologies and collaborating on
       impactful software projects.
     </p>
-    <Links />
+    <Menu />
   </main>
 
   <Skills />
   <Projects />
+  <Contact />
+  <Footer />
 </Layout>
