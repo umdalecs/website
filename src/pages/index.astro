@@ -46,33 +46,35 @@ const links: { name: string; href: string; icon: string; newPage: boolean }[] =
 
 <Layout title="umdalecs">
   <main
-    class="text-center min-h-full max-w-4xl flex flex-col flex-center justify-center items-center mx-auto px-4 fade-on-scroll"
+    class="text-center min-h-full max-w-4xl flex flex-col justify-center items-center mx-auto px-4 fade-on-scroll"
     id="hero"
   >
     <Image
-      class="border rounded-[50%]"
+      class="border-3 border-accent-blue box-glow-blue rounded-[50%] transition-all duration-400 ease-out hover:scale-108 hover:rotate-2 hover:box-glow-blue-intense"
       src={profileImage}
       alt="Profile picture"
       width={200}
       height={200}
     />
-    <h1 class="text-4xl text-foreground-accent mb-4">Alejandro Flores</h1>
-    <h3 class="text-2xl text-foreground-accent3 mb-4">
+    <h1 class="text-4xl md:text-5xl font-mono text-accent-blue glow-blue mt-6 mb-4 transition-all duration-300 hover:scale-102 hover:glow-blue-intense">
+      Alejandro Flores
+    </h1>
+    <h3 class="text-2xl font-mono text-accent-pink glow-pink mb-4 transition-all duration-300 hover:glow-pink-intense">
       FullStack Developer & Student
     </h3>
-    <p class="mb-4">
+    <p class="mb-6 max-w-2xl text-foreground/80 leading-relaxed">
       I'm a passionate full-stack developer with a love for learning and
       creating. I enjoy working on projects that challenge me and allow me to
       grow my skills. I'm always looking for new opportunities to collaborate
       and build amazing things together.
     </p>
     <article
-      class="flex justify-center flex-wrap w-full gap-4 mx-4 hover:text-foreground-ghost"
+      class="flex justify-center flex-wrap w-full gap-4 mx-4 group/links"
     >
       {
         links.map((link) => (
           <a
-            class="flex items-center gap-1 p-2 border rounded-sm tracking-normal hover:text-foreground-accent"
+            class="flex items-center gap-2 py-2.5 px-5 border border-accent-purple/30 rounded-lg bg-background-secondary/50 backdrop-blur-md tracking-normal transition-all duration-300 hover:text-accent-purple hover:border-accent-purple hover:box-glow-purple hover:glow-purple hover:bg-accent-purple/15 group-hover/links:opacity-50 group-hover/links:hover:opacity-100 group-hover/links:scale-95 group-hover/links:hover:scale-105 group-hover/links:border-accent-purple/10 group-hover/links:hover:border-accent-purple"
             href={link.href}
             target={link.newPage ? "_blank" : "_self"}
             rel={link.newPage ? "noopener noreferrer" : undefined}

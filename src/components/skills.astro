@@ -108,21 +108,25 @@ const stacks = [
 ];
 ---
 
-<section class="skills min-h-full max-w-3xl flex flex-col flex-center justify-center items-center mx-auto px-4 fade-on-scroll" id="skills">
-  <h2 class="text-4xl text-foreground-accent2 mb-4">Skills</h2>
-  <p class="text-center mb-4">
+<section class="skills min-h-full max-w-3xl flex flex-col justify-center items-center mx-auto px-4 mt-20 fade-on-scroll" id="skills">
+  <h2 class="text-4xl font-mono text-accent-purple glow-purple mb-6 transition-all duration-300 hover:glow-purple-intense">
+    Skills
+  </h2>
+  <p class="text-center text-foreground/80 mb-8 max-w-2xl leading-relaxed">
     I have experience with a variety of technologies and tools, including
     JavaScript, TypeScript, React, Node.js, Astro, and more. I'm always eager
     to learn new technologies and expand my skill set.
   </p>
-  <article>
+  <article class="w-full">
     {
     stacks.map((stack) => (
-      <h3 class="mb-2">{stack.name}</h3>
-      <div class="flex flex-wrap gap-2 mb-2">
+      <h3 class="text-xl font-mono text-accent-pink glow-pink mt-6 mb-3 transition-all duration-300 hover:glow-pink-intense">
+        {stack.name}
+      </h3>
+      <div class="flex flex-wrap gap-3 mb-6">
           {stack.items.map((item) => (
-            <span class="bg-background-light border rounded-sm py-2 px-1 flex items-center gap-1">
-                <Icon size="1rem" name={item.icon} />
+            <span class="bg-background-light/40 border border-accent-purple/20 rounded-lg py-2 px-4 flex items-center gap-2 font-mono text-sm backdrop-blur-sm transition-all duration-300 hover:border-accent-purple hover:box-glow-purple hover:-translate-y-0.5 hover:text-white">
+                <Icon size="1.15rem" class="drop-shadow-white-soft" name={item.icon} />
                 <span>{item.title}</span>
             </span>
           ))}
