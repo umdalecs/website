@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
-
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 
@@ -8,40 +6,7 @@ import profileImage from "../assets/profile.png";
 
 import Skills from "../components/skills.astro";
 import Projects from "../components/projects.astro";
-
-const links: { name: string; href: string; icon: string; newPage: boolean }[] =
-  [
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/ing-alejandrof/",
-      icon: "lucide:linkedin",
-      newPage: true,
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/umdalecs",
-      icon: "lucide:github",
-      newPage: true,
-    },
-    {
-      name: "Contact",
-      href: "mailto:umdalecs@proton.me",
-      icon: "lucide:mail",
-      newPage: false,
-    },
-    {
-      name: "Skills",
-      href: "#skills",
-      icon: "lucide:star",
-      newPage: false,
-    },
-    {
-      name: "Projects",
-      href: "#projects",
-      icon: "lucide:folder",
-      newPage: false,
-    },
-  ];
+import Links from "../components/links.astro";
 ---
 
 <Layout title="umdalecs">
@@ -68,23 +33,7 @@ const links: { name: string; href: string; icon: string; newPage: boolean }[] =
       grow my skills. I'm always looking for new opportunities to collaborate
       and build amazing things together.
     </p>
-    <article
-      class="flex justify-center flex-wrap w-full gap-4 mx-4 group/links"
-    >
-      {
-        links.map((link) => (
-          <a
-            class="flex items-center gap-2 py-2.5 px-5 border border-accent-purple/30 rounded-lg bg-background-secondary/50 backdrop-blur-md tracking-normal transition-all duration-300 hover:text-accent-purple hover:border-accent-purple hover:box-glow-purple hover:glow-purple hover:bg-accent-purple/15 group-hover/links:opacity-50 group-hover/links:hover:opacity-100 group-hover/links:scale-95 group-hover/links:hover:scale-105 group-hover/links:border-accent-purple/10 group-hover/links:hover:border-accent-purple"
-            href={link.href}
-            target={link.newPage ? "_blank" : "_self"}
-            rel={link.newPage ? "noopener noreferrer" : undefined}
-          >
-            <Icon name={link.icon} />
-            {link.name}
-          </a>
-        ))
-      }
-    </article>
+    <Links />
   </main>
 
   <Skills />
