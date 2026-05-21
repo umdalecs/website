@@ -11,17 +11,81 @@
 }
 
 @theme {
-    --color-background: #24283b;
-    --color-background-secondary: #1a1b26;
-    --color-background-accent: #1d1d1d;
-    --color-background-light: #33364d;
-    --color-foreground: #a9b1d6;
-    --color-foreground-accent: #f7768e;
-    --color-foreground-accent2: #ff9e64;
-    --color-foreground-accent3: #e0af68;
-    --color-foreground-ghost: #414868;
+    --color-background: oklch(0.08 0.02 245);
+    --color-background-secondary: oklch(0.12 0.04 245);
+    --color-background-accent: oklch(0.18 0.06 245);
+    --color-background-light: oklch(0.25 0.1 245);
+    --color-foreground: oklch(0.96 0.01 245);
+    --color-foreground-ghost: oklch(0.55 0.02 240);
+    --color-foreground-glow: oklch(1 0 0 / 0.3);
+    
+    --color-accent-blue: oklch(0.55 0.3 250);   /* Electric Neon Blue */
+    --color-accent-blue-glow-high: oklch(0.55 0.3 250 / 0.8);
+    --color-accent-blue-glow-med: oklch(0.55 0.3 250 / 0.7);
+    --color-accent-blue-glow-low: oklch(0.55 0.3 250 / 0.4);
+    --color-accent-blue-glow-min: oklch(0.55 0.3 250 / 0.2);
+    --color-accent-blue-bg-glow: oklch(0.55 0.3 250 / 0.08);
+
+    --color-accent-purple: oklch(0.5 0.28 300);  /* Electric Neon Purple */
+    --color-accent-purple-glow-high: oklch(0.5 0.28 300 / 0.9);
+    --color-accent-purple-glow-med: oklch(0.5 0.28 300 / 0.7);
+    --color-accent-purple-glow-low: oklch(0.5 0.28 300 / 0.4);
+    --color-accent-purple-glow-min: oklch(0.5 0.28 300 / 0.2);
+    --color-accent-purple-bg-glow: oklch(0.5 0.28 300 / 0.08);
+
+    --color-accent-pink: oklch(0.6 0.28 345);    /* Electric Neon Pink */
+    --color-accent-pink-glow-high: oklch(0.6 0.28 345 / 0.9);
+    --color-accent-pink-glow-med: oklch(0.6 0.28 345 / 0.7);
+    --color-accent-pink-glow-low: oklch(0.6 0.28 345 / 0.4);
+    --color-accent-pink-bg-glow: oklch(0.6 0.28 345 / 0.08);
+
     --font-inter: "Inter", sans-serif;
     --font-mono: "JetBrainsMono", monospace;
+}
+
+@utility glow-blue {
+    text-shadow: 0 0 5px var(--color-accent-blue-glow-high), 0 0 15px var(--color-accent-blue-glow-low), 0 0 30px var(--color-accent-blue-glow-min);
+}
+@utility glow-blue-intense {
+    text-shadow: 0 0 10px var(--color-accent-blue-glow-high), 0 0 25px var(--color-accent-blue-glow-med), 0 0 50px var(--color-accent-blue-glow-low);
+}
+@utility glow-blue-medium {
+    text-shadow: 0 0 10px var(--color-accent-blue-glow-high);
+}
+
+@utility glow-purple {
+    text-shadow: 0 0 5px var(--color-accent-purple-glow-high), 0 0 15px var(--color-accent-purple-glow-low), 0 0 30px var(--color-accent-purple-glow-min);
+}
+@utility glow-purple-intense {
+    text-shadow: 0 0 10px var(--color-accent-purple-glow-high), 0 0 25px var(--color-accent-purple-glow-med), 0 0 50px var(--color-accent-purple-glow-low);
+}
+
+@utility glow-pink {
+    text-shadow: 0 0 5px var(--color-accent-pink-glow-high), 0 0 15px var(--color-accent-pink-glow-low);
+}
+@utility glow-pink-intense {
+    text-shadow: 0 0 10px var(--color-accent-pink-glow-high), 0 0 25px var(--color-accent-pink-glow-med);
+}
+
+@utility box-glow-blue {
+    box-shadow: 0 0 15px var(--color-accent-blue-glow-low), inset 0 0 5px var(--color-accent-blue-glow-min);
+}
+@utility box-glow-blue-intense {
+    box-shadow: 0 0 25px var(--color-accent-blue-glow-med), inset 0 0 15px var(--color-accent-blue-glow-low);
+}
+@utility shadow-blue-glow {
+    box-shadow: 0 0 10px var(--color-accent-blue-glow-low);
+}
+
+@utility box-glow-purple {
+    box-shadow: 0 0 15px var(--color-accent-purple-glow-low), inset 0 0 5px var(--color-accent-purple-glow-min);
+}
+@utility box-glow-pink {
+    box-shadow: 0 0 15px var(--color-accent-pink-glow-low), inset 0 0 5px var(--color-accent-pink-glow-med);
+}
+
+@utility drop-shadow-white-soft {
+    filter: drop-shadow(0 0 2px var(--color-foreground-glow));
 }
 
 @layer utilities {
@@ -36,4 +100,46 @@
     to {
         opacity: 0;
     }
+}
+
+body {
+  background: 
+    radial-gradient(circle at 50% 0%, var(--color-accent-pink-bg-glow) 0%, transparent 50%),
+    radial-gradient(circle at 90% 40%, var(--color-accent-blue-bg-glow) 0%, transparent 40%),
+    radial-gradient(circle at 10% 80%, var(--color-accent-purple-bg-glow) 0%, transparent 45%),
+    var(--color-background);
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+  pointer-events: none;
+  z-index: -1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-background-light);
+  border-radius: 4px;
+  border: 1px solid var(--color-accent-blue-glow-min);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-blue);
+  box-shadow: 0 0 10px var(--color-accent-blue);
 }
