@@ -1,12 +1,27 @@
 ---
 import { Image } from "astro:assets";
+import portfolioImage from "../assets/project-images/portfolio.png";
+import nexusImage from "../assets/project-images/nexus.png";
 
 const projects: {
   name: string;
   description: string;
   image: ImageMetadata;
   link: string | null;
-}[] = [];
+}[] = [
+  {
+    name: "umdalecs.github.io",
+    description: "My personal developer portfolio featuring a premium high-contrast dark theme. Engineered with Astro, Tailwind CSS v4, and modern OKLCH color spaces for rich neon glows.",
+    image: portfolioImage,
+    link: "https://github.com/umdalecs/umdalecs.github.io",
+  },
+  {
+    name: "Project Nexus",
+    description: "An upcoming software application utilizing advanced modern tech stacks. This sleek placeholder visualizes future deployment goals and cybernetic architecture.",
+    image: nexusImage,
+    link: "https://github.com/umdalecs",
+  }
+];
 ---
 
 {
