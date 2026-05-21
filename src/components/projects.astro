@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import nexusImage from "../assets/project-images/nexus.png";
+import javititaImage from "../assets/project-images/javitita.png";
 
 const projects: {
   name: string;
@@ -9,10 +9,10 @@ const projects: {
   link: string | null;
 }[] = [
   {
-    name: "Project Nexus",
-    description: "An upcoming software application utilizing advanced modern tech stacks. This sleek placeholder visualizes future deployment goals and cybernetic architecture.",
-    image: nexusImage,
-    link: "https://github.com/umdalecs",
+    name: "Javitita",
+    description: "A Java Swing-based IDE and compiler. Features syntax highlighting powered by a custom lexer and translates code directly to 16-bit TASM assembly object files.",
+    image: javititaImage,
+    link: "https://github.com/umdalecs/javitita",
   }
 ];
 ---
@@ -26,7 +26,7 @@ const projects: {
   </h2>
 
   <p class="p-4 text-center text-foreground/85 mb-6">
-    Here are some of my recent projects, feel free to explore:
+    A look at my active projects and software experiments currently in development, showcasing my design and learning process.
   </p>
 
   {projects.map((project) => (
